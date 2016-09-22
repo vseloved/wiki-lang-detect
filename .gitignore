@@ -1,0 +1,11 @@
+*~
+*.fasl
+\#*
+.\#*
+*.log
+.*
+data
+!data/smoke
+alt
+models
+!.gitignore

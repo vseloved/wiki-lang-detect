@@ -1,0 +1,17 @@
+Paul Graham may be right, but Chris Zacharias is righter
+Posted: December 23rd, 2012 | Author: Dan | Filed under: Startups | 4 Comments
+Chris Zacharias, founder if ImageX (and Y Combinator grad), recently wrote an interesting blog post that postulated a different funding strategy.  Instead of pricing his round at market, he priced it significantly below.  He claims this gave him access to a group of high-quality “value-conscious” angel investors who would not invest in Y Combinator companies at the higher valuations that were normal for the market.
+
+Paul Graham, founder of YC, challenged Chris on two points.  First, he claimed that it wasn’t rational for angel investors to be price-sensitive.  Second, he said that Chris’s evidence was just an anecdote – he may have found good investors at a lower price point, but that didn’t mean that less price-sensitive investors weren’t equally valuable.
+
+I think Paul may be correct, but he misses Chris’s genius.  I believe what Chris is doing is an example of one of my favorite startup strategies, the contrarian segmentation.
+
+Imagine a set of investors who have decided to only invest in companies that will accept the investment in Dutch guilders. This strange circumstance is found randomly throughout a significant minority of the investing populace, and isn’t well correlated with any other investor traits.
+
+Most companies say, “This is silly! There are meaningful downsides to taking investment in guilders. I will only consider investors who take American dollars.”
+
+But one canny startup decides to take the contrarian approach: they actively look for guilder-investing angels. They pay some additional cost for doing so (in guilder-conversion fees and so on). However, there is no competition in this investment pool. They complete their investment round far more quickly than their dollar-seeking bretheren, and get the very best of the guilder-investing angels in their round.
+
+Paul may be right that “there is no value investing in startups” – that is, Chris’s investors are making a mistake.  He may be right that non-price-conscious investors are equally or more valuable than price conscious ones.  But even so, Chris is doing something very smart: he’s fishing in a smaller pool.  There may be fewer fish, but he’s got them all to himself.
+
+(You might want to subscribe or follow me on Twitter so you don’t miss new articles)
