@@ -64,7 +64,7 @@
                              "name" "Apache")
                 "titel" "wiki-lang-detect")
       "schemes" '("http")
-      "host" "lisp.kiev.ua")))
+      "host" "wild.lisp.kiev.ua")))
 
 (defun woo-api (req)
   (let ((path (getf req :path-info))
