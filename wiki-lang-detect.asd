@@ -8,7 +8,7 @@
   :depends-on (#:rutilsx #:cl-unicode #:cl-ppcre #:cxml #:chipz #:gzip-stream
                #:zip #:babel #:flexi-streams #:drakma
                #+dev #:should-test #+dev #:local-time
-               #+prod #:cl-json #+prod #:woo #+prod #:http-body)
+               #+prod #:cl-json #+prod #:woo #+prod #:http-body #+prod #:local-time)
                ;; #+prod #:hunchentoot)
   :serial t
   :components
@@ -18,7 +18,7 @@
                  (:file "huffman")
                  (:file "model")
                  (:file "core")
-                 (:file "wiki")
+                 #+train (:file "wiki")
                  ;; #+prod (:file "hunch")
                  #+prod (:file "api")
                  (:file "user")))
