@@ -69,7 +69,7 @@
 (defun woo-api (req)
   (let ((path (getf req :path-info))
         (method (getf req :request-method)))
-    (format *standard-output* "~A ~A ~A" (locat-time:now) method path)
+    (format *standard-output* "~A ~A ~A" (local-time:now) method path)
     (cond
       ((starts-with "/swagger" path)
        (list 200 '(:content-type "application/json")
