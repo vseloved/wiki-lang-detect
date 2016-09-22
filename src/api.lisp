@@ -89,6 +89,6 @@
                  (list 200 '(:content-type "application/json")
                        (list (json:encode-json-to-string (text-langs text))))))
          (error (e)
-           (warn (fmt "~A" e))
+           (format *error-output* "~A" e)
            '(500 nil nil))))
       (t '(404 nil nil)))))
