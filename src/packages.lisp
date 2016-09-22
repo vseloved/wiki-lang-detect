@@ -1,8 +1,8 @@
 (cl:defpackage #:wiki-lang-detect
   (:nicknames #:wild)
   (:use :common-lisp #:rutilsx
-        #+dev #:should-test
-        #+prod #:hunch)
+        #+dev #:should-test)
+        ;; #+prod #:hunch)
   (:export #:word-langs
            #:word-direct-langs
            #:text-lang
