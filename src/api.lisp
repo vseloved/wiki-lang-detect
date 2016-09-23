@@ -44,8 +44,8 @@
                                   "description" "Result of language detection"
                                   "schema" #h("type" "array"
                                               "items" #h("type" "array")))))))
-      "summary" "Detect the language of the provided text"
-      "description" "The language is detecrmined based on words and character trigrams probabilities"
+      ;; "summary" "Detect the language of the provided text"
+      ;; "description" "The language is detecrmined based on words and character trigrams probabilities"
       "tags" '("langid" "lang-uk")
       "consumes" '("application/json")
       "x-microservice-taxonomy" '("test")
@@ -54,7 +54,7 @@
                              "email" "vseloved@gmail.com")
                 "description" "Language identification for 156 languages"
                 "license" #h("name" "Apache")
-                "titel" "wiki-lang-detect")
+                "title" "wiki-lang-detect")
       "schemes" '("http")
       "host" "wild.lisp.kiev.ua")))
 
