@@ -61,8 +61,7 @@
                              "name" "Vsevolod Dyomkin"
                              "email" "vseloved@gmail.com")
                 "description" "Language identification for 156 languages"
-                "license" #h(equal
-                             "name" "Apache")
+                "license" #h("name" "Apache")
                 "titel" "wiki-lang-detect")
       "schemes" '("http")
       "host" "wild.lisp.kiev.ua")))
