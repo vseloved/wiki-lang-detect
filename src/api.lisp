@@ -40,8 +40,8 @@
                           "maxLength" 5000))
                       "responses"
                       #h(equal
-                         "500" "Internal server error"
-                         "400" "Bad request"
+                         "500" #h(equal "description" "Internal server error")
+                         "400" #h(equal "description" "Bad request")
                          "200" #h(equal
                                   "examples" #h(equal
                                                 "application/json"
