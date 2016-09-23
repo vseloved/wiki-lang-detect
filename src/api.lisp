@@ -30,11 +30,11 @@
                       "parameters"
                       (list
                        #h("name" "text"
-                          "description" "Text to identify language for"
                           "in" "body"
+                          "description" "Text to identify language for"
                           "required" t
-                          "schema" #h("type" "string")
-                          "maxLength" 5000))
+                          "schema" #h("type" "string")))
+                          ;; "maxLength" 5000))
                       "responses"
                       #h("500" #h("description" "Internal server error")
                          "400" #h("description" "Bad request")
