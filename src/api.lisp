@@ -27,6 +27,8 @@
       "paths"
       #h("/detect"
          #h("post" #h("produces" '("application/json")
+                      "consumes" '("application/json")
+                      "tags" '("langid" "lang-uk")
                       "parameters"
                       (list
                        #h("name" "text"
@@ -45,8 +47,6 @@
                                               "items" #h("type" "array")))))))
       ;; "summary" "Detect the language of the provided text"
       ;; "description" "The language is detecrmined based on words and character trigrams probabilities"
-      "tags" '("langid" "lang-uk")
-      "consumes" '("application/json")
       "x-microservice-taxonomy" '("test")
       "info" #h("version" "0.9.0"
                 "contact" #h("name" "Vsevolod Dyomkin"
