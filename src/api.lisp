@@ -34,8 +34,7 @@
                           "in" "body"
                           "required" t
                           "type" "string"
-                          "maxLength" 5000
-                                 "items" #h("type" "string")))
+                          "maxLength" 5000))
                       "responses"
                       #h("500" #h("description" "Internal server error")
                          "400" #h("description" "Bad request")
