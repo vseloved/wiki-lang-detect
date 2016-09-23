@@ -35,14 +35,15 @@
                           "required" t
                           "type" "string"
                           "maxLength" 5000
-                          "items" #h("type" "string"))
-                       #h("500" #h("description" "Internal server error")
-                          "400" #h("description" "Bad request")
-                          "200" #h("examples" #h("application/json"
-                                                 #h("en" 1.0))
-                                   "description" "Result of language detection"
-                                   "schema" #h("type" "array"
-                                               "items" #h("type" "array"))))))))
+                                 "items" #h("type" "string")))
+                      "responses"
+                      #h("500" #h("description" "Internal server error")
+                         "400" #h("description" "Bad request")
+                         "200" #h("examples" #h("application/json"
+                                                #h("en" 1.0))
+                                  "description" "Result of language detection"
+                                  "schema" #h("type" "array"
+                                              "items" #h("type" "array")))))))
       "summary" "Detect the language of the provided text"
       "description" "The language is detecrmined based on words and character trigrams probabilities"
       "tags" '("langid" "lang-uk")
