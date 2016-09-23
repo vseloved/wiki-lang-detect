@@ -33,7 +33,7 @@
                           "description" "Text to identify language for"
                           "in" "body"
                           "required" t
-                          "type" "string"
+                          "schema" #h("type" "string")
                           "maxLength" 5000))
                       "responses"
                       #h("500" #h("description" "Internal server error")
