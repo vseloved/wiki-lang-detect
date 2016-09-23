@@ -34,23 +34,22 @@
                       (list
                        #h(equal
                           "name" "text"
+                          "description" "Text to identify language for"
                           "in" "body"
                           "required" t
                           "type" "string"
-                          "maxLength" 5000))
-                      "responses"
+                          "maxLength" 5000
+                          "items" #h("type" "string")))
                       #h(equal
-                         "500" #h(equal "description" "Internal server error")
-                         "400" #h(equal "description" "Bad request")
+                         "500" #h("description" "Internal server error")
+                         "400" #h("description" "Bad request")
                          "200" #h(equal
-                                  "examples" #h(equal
-                                                "application/json"
-                                                #h(equal "en" 1.0))
+                                  "examples" #h("application/json"
+                                                #h("en" 1.0))
                                   "description" "Result of language detection"
                                   "schema" #h(equal
                                               "type" "array"
-                                              "items" #h(equal
-                                                         "type" "array")))))))
+                                              "items" #h("type" "array")))))))
       "summary" "Detect the language of the provided text"
       "description" "The language is detecrmined based on words and character trigrams probabilities"
       "tags" '("langid" "lang-uk")
