@@ -48,12 +48,14 @@
                                                 #h(equal "en" 1.0))
                                   "description" "Result of language detection"
                                   "schema" #h(equal
-                                              "type" "object"))))
-            "summary" "Detect the language of the provided text"
-            "description" "The language is detecrmined based on words and character trigrams probabilities"
-            "tags" '("langid" "lang-uk")
-            "consumes" '("application/json")
-            "x-microservice-taxonomy" '("test")))
+                                              "type" "array"
+                                              "items" #h(equal
+                                                         "type" "array")))))))
+      "summary" "Detect the language of the provided text"
+      "description" "The language is detecrmined based on words and character trigrams probabilities"
+      "tags" '("langid" "lang-uk")
+      "consumes" '("application/json")
+      "x-microservice-taxonomy" '("test")
       "info" #h(equal
                 "version" "0.9.0"
                 "contact" #h(equal
@@ -87,7 +89,9 @@
                        (list (fmt "Text size exceeds maxLength (~A): ~A"
                                   *text-length-limit* (length text))))
                  (list 200 '(:content-type "application/json")
-                       (list (json:encode-json-to-string (text-langs text))))))
+                       (list (json:encode-json-to-string
+                              (mapcar ^(pair (car %) (cdr %))
+                                      (text-langs text)))))))
          (error (e)
            (format *error-output* "~A" e)
            '(500 nil nil))))

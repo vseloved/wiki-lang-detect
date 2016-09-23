@@ -141,8 +141,10 @@
          (tok-langs (map 'list ^(word-langs @%.word :detector detector
                                                     :n beam-size)
                          toks))
-         (langs (pairs->ht (map* ^(pair % (log (get# % @detector.bias
-                                                     *min-lang-bias*)))
+         (langs (pairs->ht (map* ^(pair % (if @detector.bias
+                                              (log (get# % @detector.bias
+                                                         *min-lang-bias*))
+                                              0))
                                  (remove-duplicates
                                   (flat-map ^(mapcar 'car %)
                                             tok-langs)))))
