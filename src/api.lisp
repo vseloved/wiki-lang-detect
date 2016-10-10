@@ -19,6 +19,8 @@
     (otherwise
      (hunch:abort-request htt:+http-bad-request+))))
 
+
+;; http://online.swagger.io/validator/debug?url=http://wild.lisp.kiev.ua/swagger
 (defparameter *swagger-def*
   (json:encode-json-to-string
    #h(equal
@@ -60,7 +62,8 @@
 (defun woo-api (req)
   (let ((path (getf req :path-info))
         (method (getf req :request-method)))
-    (format *standard-output* "~A ~A ~A" (local-time:now) method path)
+    (format t "~A ~A ~A~%" (local-time:now) method path)
+    (finish-output)
     (cond
       ((starts-with "/swagger" path)
        (list 200 '(:content-type "application/json")
