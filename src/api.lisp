@@ -73,10 +73,12 @@
       ((and (starts-with "/detect" path)
             (eql :POST method))
        (handler-case
-           (let ((text (assoc1 "text" (http-body:parse 
-                                       (getf req :content-type)
-                                       (getf req :content-length)
-                                       (getf req :raw-body))
+           (let ((text (assoc1 "text" (json:decode-json-from-string
+                                       (babel:octets-to-string
+                                        (http-body.util:slurp-stream
+                                         (getf req :raw-body)
+                                         (getf req :content-length))
+                                        :utf-8))
                                :test 'string-equal)))
              (if (> (length text) *text-length-limit*)
                  (list 400 '(:content-type "text/plain")
