@@ -48,7 +48,12 @@
                                                 #h("en" 1.0))
                                   "description" "Result of language detection"
                                   "schema" #h("type" "array"
-                                              "items" #h("type" "array")))))))
+                                              "items" #h("type" "object"
+                                                         "properties"
+                                                         #h("lang" #h("type"
+                                                                      "string")
+                                                            "prob" #h("type"
+                                                                      "float")))))))))
       ;; "summary" "Detect the language of the provided text"
       ;; "description" "The language is detecrmined based on words and character trigrams probabilities"
       "x-microservice-taxonomy" '("test")
@@ -87,7 +92,7 @@
                                   *text-length-limit* (length text))))
                  (list 200 '(:content-type "application/json")
                        (list (json:encode-json-to-string
-                              (mapcar ^(pair (car %) (cdr %))
+                              (mapcar (lambda (pair) #h((car pair) (cdr pair)))
                                       (text-langs text)))))))
          (error (e)
            (format *error-output* "~A" e)
