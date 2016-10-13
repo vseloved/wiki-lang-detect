@@ -36,6 +36,9 @@
                        #h("name" "text"
                           "in" "body"
                           "description" "Text to identify language for"
+                          "x-taskClass" "langdetect"
+                          "x-taskAlgo" "vseloved"
+                          "x-taskModel": "default"
                           "required" t
                           "schema" #h("type" "string"
                                       "maxLength" 5000)))
