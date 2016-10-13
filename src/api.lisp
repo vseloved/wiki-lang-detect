@@ -30,14 +30,14 @@
          #h("post" #h("produces" '("application/json")
                       "consumes" '("application/json")
                       "tags" '("langid" "lang-uk")
+                      "x-taskClass" "langdetect"
+                      "x-taskAlgo" "vseloved"
+                      "x-taskModel" "default"
                       "parameters"
                       (list
                        #h("name" "text"
                           "in" "body"
                           "description" "Text to identify language for"
-                          "x-taskClass" "langdetect"
-                          "x-taskAlgo" "vseloved"
-                          "x-taskModel" "default"
                           "required" t
                           "schema" #h("type" "string"
                                       "maxLength" 5000)))
@@ -73,12 +73,13 @@
       ((and (starts-with "/detect" path)
             (eql :POST method))
        (handler-case
-           (let ((text (assoc1 "text" (json:decode-json-from-string
-                                       (babel:octets-to-string
-                                        (http-body.util:slurp-stream
-                                         (getf req :raw-body)
-                                         (getf req :content-length))
-                                        :utf-8))
+           (with ((buf (make-array (getf req :content-length)
+                                   :element-type 'flex:octet))
+                  (text (assoc1 "text" (json:decode-json-from-string
+                                        (babel:octets-to-string
+                                          (progn (read-sequence buf (getf req :raw-body))
+                                                 buf)
+                                          :encoding :utf-8))
                                :test 'string-equal)))
              (if (> (length text) *text-length-limit*)
                  (list 400 '(:content-type "text/plain")
