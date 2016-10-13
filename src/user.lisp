@@ -3,7 +3,9 @@
 
 
 (defvar *lang-detector*
-  (let ((model-file (merge-pathnames "models/wiki156min.zip")))
+  (let ((model-file (merge-pathnames "models/wiki156min.zip"
+                                     (asdf:component-pathname
+                                      (asdf:find-system :wiki-lang-detect)))))
     (if (probe-file model-file)
         (huffman-model (load-model model-file))
         (warn "No model at ~A" model-file)))
