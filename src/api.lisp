@@ -23,8 +23,7 @@
 ;; http://online.swagger.io/validator/debug?url=http://wild.lisp.kiev.ua/swagger
 (defparameter *swagger-def*
   (json:encode-json-to-string
-   #h(equal
-      "swagger" "2.0"
+   #h("swagger" "2.0"
       "basePath" "/"
       "paths"
       #h("/detect"
@@ -38,7 +37,7 @@
                           "description" "Text to identify language for"
                           "x-taskClass" "langdetect"
                           "x-taskAlgo" "vseloved"
-                          "x-taskModel": "default"
+                          "x-taskModel" "default"
                           "required" t
                           "schema" #h("type" "string"
                                       "maxLength" 5000)))
