@@ -10,4 +10,4 @@
   "Default language detector.")
 
 #+prod
-(defparameter *woo* (woo:run 'woo-api))
+(defparameter *woo* (bt:make-thread ^(woo:run 'woo-api)))
