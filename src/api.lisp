@@ -45,10 +45,13 @@
                       #h("500" #h("description" "Internal server error")
                          "400" #h("description" "Bad request")
                          "200" #h("examples" #h("application/json"
-                                                #h("en" 1.0))
+                                                (list #h("lang" "en"
+                                                         "prob" 1.0)))
                                   "description" "Result of language detection"
                                   "schema" #h("type" "array"
                                               "items" #h("type" "object"
+                                                         "required"
+                                                         '("lang" "prob")
                                                          "properties"
                                                          #h("lang" #h("type"
                                                                       "string")
