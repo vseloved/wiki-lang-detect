@@ -92,7 +92,8 @@
                                   *text-length-limit* (length text))))
                  (list 200 '(:content-type "application/json")
                        (list (json:encode-json-to-string
-                              (mapcar (lambda (pair) #h((car pair) (cdr pair)))
+                              (mapcar (lambda (pair) #h("lang" (car pair)
+                                                        "prob" (cdr pair)))
                                       (text-langs text)))))))
          (error (e)
            (format *error-output* "~A" e)
