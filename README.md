@@ -23,7 +23,13 @@ WILD> (text-langs "це тест")
 
 1. Install SBCL
 2. Get Quicklisp
-3. In project directory run: `$ sbcl --load run.lisp`
+3. Git clone project
+4. Git clone [rutils](https://github.com/vseloved/rutils) alongside it
+5. `$ cd wiki-lang-detect; sbcl --load run.lisp`
+
+### API
+
+See [swagger definition](http://wild.lisp.kiev.ua/swagger)
 
 
 ## Helpful links:
