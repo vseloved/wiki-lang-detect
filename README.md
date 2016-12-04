@@ -24,8 +24,7 @@ WILD> (text-langs "це тест")
 1. Install SBCL
 2. Get Quicklisp
 3. Git clone project
-4. Git clone [rutils](https://github.com/vseloved/rutils) alongside it
-5. `$ cd wiki-lang-detect; sbcl --load run.lisp`
+4. `$ cd wiki-lang-detect; sbcl --load run.lisp`
 
 ### API
 
