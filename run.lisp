@@ -1,5 +1,5 @@
 (push :prod *features*)
 
-(push (merge-pathnames "../" *load-truename*) asdf:*central-registry*)
+(push (merge-pathnames "../wiki-lang-detect/" *load-truename*) asdf:*central-registry*)
 
 (ql:quickload :wiki-lang-detect)

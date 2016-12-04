@@ -48,7 +48,7 @@
   heap)
 
 (defun heap-down (heap beg &optional (end (1- (heap-size heap))))
-  (when (< (hleft beg) end)
+  (when (<= (hleft beg) end)
     (let ((child (if (or (>= (hright beg) end)
                          (call @heap.op
                                (call @heap.key (? @heap.vec (hleft beg)))
@@ -124,11 +124,13 @@
     rez))
 
 (defun word-bitvec (huffman word)
+  ""
   (list-bitvec (apply 'concatenate 'vector
                       (loop :for char :across word
                             :collect (? huffman char)))))
 
 (defun huffman-encode (word &optional (model *lang-detector*))
+  ""
   (with ((script (word-script word))
          (huffman (? @model.huffman script)))
     (when huffman

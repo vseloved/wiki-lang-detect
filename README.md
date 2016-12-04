@@ -17,6 +17,15 @@ WILD> (text-langs "це тест")
 ```
 
 
+## Running as a service
+
+### Installation
+
+1. Install SBCL
+2. Get Quicklisp
+3. In project directory run: `$ sbcl --load run.lisp`
+
+
 ## Helpful links:
 
 - [Index of languages by writing system](http://www.omniglot.com/writing/langalph.htm)
