@@ -18,7 +18,9 @@
            #:*min-lang-bias*
 
            #:save-model
-           #:load-model))
+           #:load-model
+
+           #+prod #:*woo*))
 
 
 (in-package #:wiki-lang-detect)

@@ -189,7 +189,6 @@
     ;; in case of too many words and too small or too large prob -
     ;; select the single best lang
     (dotable (lang logprob langs)
-      #+nil
       (when (or (null max)
                 (> logprob max))
         (:= max logprob

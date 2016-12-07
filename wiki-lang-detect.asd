@@ -8,7 +8,7 @@
   :depends-on (#:rutilsx #:cl-unicode #:cl-ppcre #:cxml #:chipz #:gzip-stream
                #:zip #:babel #:flexi-streams #:drakma
                #+dev #:should-test #+dev #:local-time
-               #+prod #:cl-json #+prod #:woo #+prod #:http-body #+prod #:local-time)
+               #+prod #:cl-json #+prod #:woo #+prod #:http-body)
   :serial t
   :components
   ((:module "src" :serial t
