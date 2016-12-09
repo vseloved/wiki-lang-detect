@@ -26,6 +26,22 @@ WILD> (text-langs "це тест")
 3. Git clone project
 4. `$ cd wiki-lang-detect; sbcl --load run.lisp`
 
+
+## Running as a Docker
+
+```
+docker build -t wiki-lang-detect:latest .
+docker run -it -p 5000:5000 wiki-lang-detect:latest
+
+curl -X POST -H "Content-Type: application/json" -d "{'text': 'Несе Галя'}"  http://localhost:5000/detect | jq '.'
+```
+
+Or you can use prebuilt Docker image maintained outside of this repository.
+
+```
+docker run -it -p 5000:5000 chaliy/wiki-lang-detect:latest
+```
+
 ### API
 
 See [swagger definition](http://wild.lisp.kiev.ua/swagger)

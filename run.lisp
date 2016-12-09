@@ -1,7 +1,4 @@
-(push :prod *features*)
+(load "../wiki-lang-detect/init.lisp")
 
-(push (merge-pathnames "../wiki-lang-detect/") asdf:*central-registry*)
-
-(ql:quickload :wiki-lang-detect)
-
+(format t "\nService runs at http://localhost:5000/\n")
 (bt:join-thread wild:*woo*)
