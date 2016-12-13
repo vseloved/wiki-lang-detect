@@ -6,8 +6,8 @@
   :author "Vsevolod Dyomkin <vseloved@gmail.com>"
   :maintainer "Vsevolod Dyomkin <vseloved@gmail.com>"
   :depends-on (#:rutilsx #:cl-unicode #:cl-ppcre #:cxml #:chipz #:gzip-stream
-               #:zip #:babel #:flexi-streams #:drakma
-               #+dev #:should-test #+dev #:local-time
+               #:zip #:babel #:flexi-streams #:drakma #:local-time
+               #+dev #:should-test
                #+prod #:cl-json #+prod #:woo #+prod #:http-body)
   :serial t
   :components
