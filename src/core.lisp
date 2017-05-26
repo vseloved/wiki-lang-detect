@@ -16,7 +16,12 @@
                                            @struct.langs))))))
   word langs)
 
-(defstruct lang-detector
+(defstruct (lang-detector
+            (:print-function
+             (lambda (m out nested)
+               (declare (ignore nested))
+               (format out "#<LANG-DETECTOR langs:~A words:~A 3gs:~A~@[ huffman~]>"
+                       (ht-count @m.langs) @m.words-count @m.3gs-count @m.huffman))))
   (bias *internet-lang-bias*)
   (langs #h())
   (words #h(equal))
@@ -148,13 +153,13 @@
                                  (remove-duplicates
                                   (flat-map ^(mapcar 'car %)
                                             tok-langs)))))
-         ;; (same-lang-spans (make-array (length toks) :initial-element 1))
          (total 0)
          (fifth (ceiling (length toks) 5))
          (max nil)
          (argmax nil)
          (prev-lang nil)
-         (prev-beg nil))
+         (prev-beg nil)
+         (spans nil))
     ;; kanji hack
     (dolist (lang '(:ja :ko))
       (when (> (count-if ^(assoc1 lang %) tok-langs)
@@ -162,22 +167,9 @@
         (:= tok-langs (substitute-if (list (cons lang 1.0))
                                      ^(assoc1 :zh %)
                                      tok-langs))))
-    ;; calc same best-lang spans
-    ;; (doindex (i cur-langs tok-langs
-    ;;             (when prev-lang
-    ;;               (loop :for j :from prev-beg :below i :do
-    ;;                 (:= (? same-lang-spans j) (- i prev-beg)))))
-    ;;   (let ((cur-lang (car (? cur-langs 0))))
-    ;;     (unless (eql prev-lang cur-lang)
-    ;;       (when prev-lang
-    ;;         (loop :for j :from prev-beg :below i :do
-    ;;           (:= (? same-lang-spans j) (- i prev-beg))))
-    ;;       (:= prev-lang cur-lang
-    ;;           prev-beg i))))
     ;; calc lang probs
     (loop :for tok :across toks
           :for cur-langs :in tok-langs :do
-          ;; :for span :across same-lang-spans :do
       (let ((importance (word-importance @tok.word)))
         (:= @tok.langs cur-langs)
         (dotable (lang _ langs)
@@ -185,7 +177,6 @@
               (log (* (or (assoc1 lang cur-langs)
                           (sqrt (/ 1 @detector.words-count)))
                       importance))))))
-                      ;;; (log (1+ span) 2))))
     ;; in case of too many words and too small or too large prob -
     ;; select the single best lang
     (dotable (lang logprob langs)

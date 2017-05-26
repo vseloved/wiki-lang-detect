@@ -132,6 +132,7 @@
 (defun huffman-model (model)
   "Return the huffmanized version of MODEL that will have 2-level (script - key)
    words & 3gs fields instead of 1-level (key)."
+  (format t "Starting Huffman transformation for model ")  
   (with ((rez (make-lang-detector
                :bias @model.bias
                :langs @model.langs
@@ -141,17 +142,21 @@
                :3gs-count @model.3gs-count
                :huffman (huffman-dict model)))
          (words @rez.words)
-         (3gs @rez.3gs))
+         (3gs @rez.3gs)
+         (i 0))
     (dotable (word logprobs @model.words)
+      (when (zerop (floor (:+ i) 1000)) (princ "."))
       (let ((script (word-script word)))
         (unless (in# script words)
           (:= (? words script) #h(equal)))
         (:= (? words script (huffman-encode word rez)) logprobs)))
     (dotable (3g logprobs @model.3gs)
+      (when (zerop (floor (:+ i) 1000)) (princ "."))
       (let ((script (word-script 3g)))
         (unless (in# script 3gs)
           (:= (? 3gs script) #h(equal)))
         (:= (? 3gs script (huffman-encode 3g rez)) logprobs)))
+    (format t " done.~%")
     rez))
 
 
