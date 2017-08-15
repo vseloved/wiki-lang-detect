@@ -84,7 +84,7 @@
 ;;; core calcs
 
 (defun word-langs (word &key (detector *lang-detector*) (n 5) (threshold 0.0)
-                        only-langs)
+                        only-langs known-words-threshold)
   "Return an alist of up to N langs with their probs for WORD
    using DETECTOR with a possible cutoff probability THRESHOLD."
   (with ((script (word-script word))
@@ -127,7 +127,10 @@
   "Return list of langs for WORD if it is directly known to the DETECTOR."
   (or (when-it (? *1lang-scripts* (unicode-script (? word 0)))
         (list it))
-      (keys (? @detector.words word))))
+      (if @detector.huffman
+          (when-it (? @detector.words (word-script word))
+            (keys (? it (huffman-encode word detector))))
+          (keys (? @detector.words word)))))
 
 (defun text-langs (text &key (detector *lang-detector*)
                           (n 5) (threshold 0.1) (beam-size 30))
@@ -202,10 +205,17 @@
       (values (subseq (sort all '> :key 'cdr) 0 (min n (ht-count langs)))
               toks))))
 
-(defun text-lang (text &key (detector *lang-detector*) (beam-size 30))
+(defun text-lang (text &key (detector *lang-detector*) (beam-size 30)
+                       (known-words-threshold 0.3))
   "Return the top language for TEXT according to the DETECTOR
-   (with a specified BEAM-SIZE.)"
-  (car (first (text-langs text :detector detector :beam-size beam-size))))
+   (with a specified BEAM-SIZE.)
+   If KNOWN-WORDS-THRESHOLD is supplied at least a given ratio of words
+   should be recognized by the detector to output non-nil lang."
+  (and (car (first (text-langs text :detector detector :beam-size beam-size)))
+       (or (null known-words-threshold)
+           (let ((words (extract-words text)))
+             (>= (count-if 'just (mapcar 'word-direct-langs words)) 
+                 (* known-words-threshold (length words)))))))
 
 
 ;;; utils
