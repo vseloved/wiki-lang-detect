@@ -18,4 +18,4 @@
   (rem# script @*lang-detector*.words))
 
 #+prod
-(defparameter *woo* (bt:make-thread ^(woo:run 'woo-api :port 5000)))
+(defvar *woo* (bt:make-thread ^(woo:run 'woo-api :port 5000)))
