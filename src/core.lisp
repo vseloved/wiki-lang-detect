@@ -211,11 +211,12 @@
    (with a specified BEAM-SIZE.)
    If KNOWN-WORDS-THRESHOLD is supplied at least a given ratio of words
    should be recognized by the detector to output non-nil lang."
-  (and (car (first (text-langs text :detector detector :beam-size beam-size)))
-       (or (null known-words-threshold)
-           (let ((words (extract-words text)))
-             (>= (count-if 'just (mapcar 'word-direct-langs words)) 
-                 (* known-words-threshold (length words)))))))
+  (and-it (car (first (text-langs text :detector detector :beam-size beam-size)))
+          (and (or (null known-words-threshold)
+                   (let ((words (extract-words text)))
+                     (>= (count-if 'just (mapcar 'word-direct-langs words)) 
+                         (* known-words-threshold (length words)))))
+               it)))
 
 
 ;;; utils
